@@ -1,0 +1,21 @@
+.sliding-right {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transform: translateX(100px);
+    width: 100%;
+    will-change: transform, opacity;
+    text-align: center;
+    font-family: var(--main-font);
+    font-size: var(--font-size-normal);
+}
+
+.sliding-right.with-transition {
+    transition: all 0.8s ease-out;
+}
+
+.sliding-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}

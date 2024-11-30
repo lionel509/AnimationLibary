@@ -1,0 +1,21 @@
+.flying-left {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transform: translate(-100px, -50px) rotate(-15deg);
+    width: 100%;
+    will-change: transform, opacity;
+    text-align: center;
+    font-family: var(--main-font);
+    font-size: var(--font-size-normal);
+}
+
+.flying-left.with-transition {
+    transition: all 0.8s ease-out;
+}
+
+.flying-left.active {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+}

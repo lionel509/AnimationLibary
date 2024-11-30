@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Showcase</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/typewriter.css">
+    <link rel="stylesheet" href="css/slidingin(right).css">
+    <link rel="stylesheet" href="css/slidingin(left).css">
+    <link rel="stylesheet" href="css/flying(right).css">
+    <link rel="stylesheet" href="css/flying(left).css">
+    <link rel="stylesheet" href="css/flyword(right).css">
+    <link rel="stylesheet" href="css/flyword(left).css">
+    <link rel="stylesheet" href="css/flyletter(right).css">
+    <link rel="stylesheet" href="css/flyletter(left).css">
+    <link rel="stylesheet" href="css/flying(top).css">
+    <link rel="stylesheet" href="css/flying(bottom).css">
+    <link rel="stylesheet" href="css/flyletter(top).css">
+    <link rel="stylesheet" href="css/flyletter(bottom).css">
+    <link rel="stylesheet" href="css/scramble(left).css">
+    <link rel="stylesheet" href="css/scramble(right).css">
+    <link rel="stylesheet" href="css/flyword(top).css">
+    <link rel="stylesheet" href="css/flyword(bottom).css">
+    <script src="js/helper.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="scripts/text-animations/flying(right).js" defer></script>
+    <script src="scripts/text-animations/flying(left).js" defer></script>
+    <script src="scripts/text-animations/flyword(right).js" defer></script>
+    <script src="scripts/text-animations/flyword(left).js" defer></script>
+    <script src="scripts/text-animations/flyletter(right).js" defer></script>
+    <script src="scripts/text-animations/flyletter(left).js" defer></script>
+    <script src="scripts/text-animations/flying(top).js" defer></script>
+    <script src="scripts/text-animations/flying(bottom).js" defer></script>
+    <script src="scripts/text-animations/flyletter(top).js" defer></script>
+    <script src="scripts/text-animations/flyletter(bottom).js" defer></script>
+    <script src="scripts/text-animations/scramble(left).js" defer></script>
+    <script src="scripts/text-animations/scramble(right).js" defer></script>
+    <script src="scripts/text-animations/flyword(top).js" defer></script>
+    <script src="scripts/text-animations/flyword(bottom).js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Animation Showcase</h1>
+            <p>A collection of free, customizable animations for your projects!</p>
+        </header>
+        <main>
+            <!-- Typewriter Animation Category -->
+            <section class="animation-category">
+                <h2 class="category-title">Text Animations</h2>
+                
+                <!-- Typewriter Row -->
+                <div class="animation-row">
+                    <h3 class="animation-row-title">Typewriter Effects</h3>
+                    <div class="animation-boxes">
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="typewriter" class="typewriter" data-text="Typewriter Animation"></div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="replayTypewriter('typewriter', 'Typewriter Animation', 100)">Replay</button>
+                                <button id="toggle-typewriter-code" onclick="toggleCode('typewriter-code', 'toggle-typewriter-code')">Show Code</button>
+                                <button onclick="copyCode('typewriter-code')">Copy</button>
+                                <button onclick="downloadCode('typewriter-code', 'typewriter.js')">Download</button>
+                            </div>
+                            <pre id="typewriter-code" style="display: none;"><code>/* CSS */
+.typewriter {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    border-right: 2px solid #ffffff;
+    white-space: pre-wrap;
+    overflow: hidden;
+    max-width: 100%;
+    min-height: 1.2em;
+    animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #ffffff }
+}
+
+/* JavaScript */
+function typeWriter(element, text, speed) {
+    element.textContent = ''; // Clear existing content
+    let i = 0;
+    const maxWidth = element.offsetWidth;
+    let currentLine = '';
+
+    function type() {
+        if (i < text.length) {
+            const char = text.charAt(i);
+            const testLine = currentLine + char;
+            
+            // Add line break if word would exceed container width
+            if (getTextWidth(testLine, element) > maxWidth) {
+                element.textContent += '\n';
+                currentLine = char;
+            } else {
+                currentLine = testLine;
+            }
+            
+            element.textContent += char;
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+
+    // Helper function to calculate text width
+    function getTextWidth(text, element) {
+        const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
+        const context = canvas.getContext('2d');
+        const font = window.getComputedStyle(element, null).getPropertyValue('font');
+        context.font = font;
+        return context.measureText(text).width;
+    }
+
+    type();
+}
+
+// Replay functionality
+function replayTypewriter(elementId, text, speed) {
+    const element = document.getElementById(elementId);
+    element.textContent = '';
+    typeWriter(element, text, speed);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sliding Animations Row -->
+                <div class="animation-row">
+                    <h3 class="animation-row-title">Sliding Effects</h3>
+                    <div class="animation-boxes">
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="sliding-right" class="sliding-right">Sliding Right Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="replaySliding('sliding-right')">Replay</button>
+                                <button id="toggle-sliding-code" onclick="toggleCode('sliding-code', 'toggle-sliding-code')">Show Code</button>
+                                <button onclick="copyCode('sliding-code')">Copy</button>
+                                <button onclick="downloadCode('sliding-code', 'slidingin-right.js')">Download</button>
+                            </div>
+                            <pre id="sliding-code" style="display: none;"><code>/* CSS */
+.sliding-right {
+    display: block;
+    position: relative;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease-out;
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+.sliding-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* JavaScript */
+function replaySliding(elementId) {
+    const element = document.getElementById(elementId);
+    // Reset the element to its initial state
+    element.style.opacity = '0';
+    element.style.transform = 'translateX(100px)';
+    
+    // Force reflow
+    void element.offsetWidth;
+    
+    // Restore the transition
+    element.style.transition = 'all 0.8s ease-out';
+    
+    // Apply the active state
+    requestAnimationFrame(() => {
+        element.style.opacity = '1';
+        element.style.transform = 'translateX(0)';
+    });
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="sliding-left" class="sliding-left">Sliding Left Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="replaySliding('sliding-left')">Replay</button>
+                                <button id="toggle-sliding-left-code" onclick="toggleCode('sliding-left-code', 'toggle-sliding-left-code')">Show Code</button>
+                                <button onclick="copyCode('sliding-left-code')">Copy</button>
+                                <button onclick="downloadCode('sliding-left-code', 'slidingin-left.js')">Download</button>
+                            </div>
+                            <pre id="sliding-left-code" style="display: none;"><code>/* CSS */
+.sliding-left {
+    display: block;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-100px);
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+.sliding-left.with-transition {
+    transition: all 0.8s ease-out;
+}
+
+.sliding-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* JavaScript */
+function initializeSlidingLeft(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.textContent = text;
+    element.classList.add('sliding-left');
+    
+    // Trigger the animation after a small delay
+    setTimeout(() => {
+        element.classList.add('active');
+    }, 100);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flying Animations Row -->
+                <div class="animation-row">
+                    <h3 class="animation-row-title">Flying Effects</h3>
+                    
+                    <!-- Basic Flying Effects -->
+                    <h4 class="animation-subrow-title">Basic Flying</h4>
+                    <div class="animation-boxes">
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flying-right" class="flying-right">Flying Right Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="replayFlying('flying-right')">Replay</button>
+                                <button id="toggle-flying-right-code" onclick="toggleCode('flying-right-code', 'toggle-flying-right-code')">Show Code</button>
+                                <button onclick="copyCode('flying-right-code')">Copy</button>
+                                <button onclick="downloadCode('flying-right-code', 'flying-right.js')">Download</button>
+                            </div>
+                            <pre id="flying-right-code" style="display: none;"><code>/* CSS */
+.flying-right {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transform: translate(100px, -50px) rotate(15deg);
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+.flying-right.with-transition {
+    transition: all 0.8s ease-out;
+}
+
+.flying-right.active {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flying-left" class="flying-left">Flying Word Left Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="replayFlying('flying-left')">Replay</button>
+                                <button id="toggle-flying-left-code" onclick="toggleCode('flying-left-code', 'toggle-flying-left-code')">Show Code</button>
+                                <button onclick="copyCode('flying-left-code')">Copy</button>
+                                <button onclick="downloadCode('flying-left-code', 'flying-left.js')">Download</button>
+                            </div>
+                            <pre id="flying-left-code" style="display: none;"><code>/* CSS */
+.flying-left {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transform: translate(-100px, -50px) rotate(-15deg);
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+.flying-left.with-transition {
+    transition: all 0.8s ease-out;
+}
+
+.flying-left.active {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flying-top" class="flying-top">Flying Top Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlyingTop('flying-top', 'Flying Top Animation')">Replay</button>
+                                <button id="toggle-flying-top-code" onclick="toggleCode('flying-top-code')">Show Code</button>
+                                <button onclick="copyCode('flying-top-code')">Copy</button>
+                                <a href="text-animations/flying(top).js" download="flying-top.js">Download</a>
+                            </div>
+                            <pre id="flying-top-code" style="display: none;"><code>/* CSS */
+.flying-top {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-100px);
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+.flying-top.with-transition {
+    transition: all 0.8s ease-out;
+}
+
+.flying-top.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* JavaScript */
+function initializeFlyingTop(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.textContent = text;
+    element.classList.add('flying-top');
+    
+    // Trigger the animation after a small delay
+    setTimeout(() => {
+        element.classList.add('active');
+    }, 100);
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flying-bottom" class="flying-bottom">Flying Bottom Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlyingBottom('flying-bottom', 'Flying Bottom Animation')">Replay</button>
+                                <button id="toggle-flying-bottom-code" onclick="toggleCode('flying-bottom-code')">Show Code</button>
+                                <button onclick="copyCode('flying-bottom-code')">Copy</button>
+                                <a href="text-animations/flying(bottom).js" download="flying-bottom.js">Download</a>
+                            </div>
+                            <pre id="flying-bottom-code" style="display: none;"><code>/* CSS */
+.flying-bottom {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(100px);
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+.flying-bottom.with-transition {
+    transition: all 0.8s ease-out;
+}
+
+.flying-bottom.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* JavaScript */
+function initializeFlyingBottom(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.textContent = text;
+    element.classList.add('flying-bottom');
+    
+    // Trigger the animation after a small delay
+    setTimeout(() => {
+        element.classList.add('active');
+    }, 100);
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Flying Words Effects -->
+                    <h4 class="animation-subrow-title">Flying Words</h4>
+                    <div class="animation-boxes">
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyword-right">Flying Words Right Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlywordRight('flyword-right', 'Flying Words Right Animation')">Replay</button>
+                                <button id="toggle-flyword-right-code" onclick="toggleCode('flyword-right-code')">Show Code</button>
+                                <button onclick="copyCode('flyword-right-code')">Copy</button>
+                                <a href="text-animations/flyword(right).js" download="flyword-right.js">Download</a>
+                            </div>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyword-left">Flying Words Left Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlywordLeft('flyword-left', 'Flying Words Left Animation')">Replay</button>
+                                <button id="toggle-flyword-left-code" onclick="toggleCode('flyword-left-code')">Show Code</button>
+                                <button onclick="copyCode('flyword-left-code')">Copy</button>
+                                <a href="text-animations/flyword(left).js" download="flyword-left.js">Download</a>
+                            </div>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyword-top">Flying Words Top Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlywordTop('flyword-top', 'Flying Words Top Animation')">Replay</button>
+                                <button id="toggle-flyword-top-code" onclick="toggleCode('flyword-top-code')">Show Code</button>
+                                <button onclick="copyCode('flyword-top-code')">Copy</button>
+                                <a href="text-animations/flyword(top).js" download>Download</a>
+                            </div>
+                            <pre id="flyword-top-code" style="display: none;"><code>/* CSS */
+.flyword-top {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity;
+}
+
+.flyword-top.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* JavaScript */
+function initializeFlywordTop(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = '';
+    
+    const words = text.split(' ');
+    
+    words.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.textContent = word + (index < words.length - 1 ? ' ' : '');
+        span.className = 'flyword-top';
+        span.style.transitionDelay = `${index * 0.1}s`;
+        element.appendChild(span);
+    });
+    
+    requestAnimationFrame(() => {
+        Array.from(element.children).forEach(span => {
+            span.classList.add('active');
+        });
+    });
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyword-bottom">Flying Words Bottom Animation</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlywordBottom('flyword-bottom', 'Flying Words Bottom Animation')">Replay</button>
+                                <button id="toggle-flyword-bottom-code" onclick="toggleCode('flyword-bottom-code')">Show Code</button>
+                                <button onclick="copyCode('flyword-bottom-code')">Copy</button>
+                                <a href="text-animations/flyword(bottom).js" download>Download</a>
+                            </div>
+                            <pre id="flyword-bottom-code" style="display: none;"><code>/* CSS */
+.flyword-bottom {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity;
+}
+
+.flyword-bottom.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* JavaScript */
+function initializeFlywordBottom(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = '';
+    
+    const words = text.split(' ');
+    
+    words.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.textContent = word + (index < words.length - 1 ? ' ' : '');
+        span.className = 'flyword-bottom';
+        span.style.transitionDelay = `${index * 0.1}s`;
+        element.appendChild(span);
+    });
+    
+    requestAnimationFrame(() => {
+        Array.from(element.children).forEach(span => {
+            span.classList.add('active');
+        });
+    });
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Flying Letters Effects -->
+                    <h4 class="animation-subrow-title">Flying Letters</h4>
+                    <div class="animation-boxes">
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyletter-right">Flying Letters Right</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlyletterRight('flyletter-right', 'Flying Letters Right')">Replay</button>
+                                <button id="toggle-flyletter-right-code" onclick="toggleCode('flyletter-right-code')">Show Code</button>
+                                <button onclick="copyCode('flyletter-right-code')">Copy</button>
+                                <a href="text-animations/flyletter(right).js" download>Download</a>
+                            </div>
+                            <pre id="flyletter-right-code" style="display: none;"><code>/* CSS */
+.flyletter-right {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translate(30px, -30px) rotate(45deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity;
+}
+
+.flyletter-right.active {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+}
+
+/* JavaScript */
+function initializeFlyletterRight(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = '';
+    
+    [...text].forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.className = 'flyletter-right';
+        span.style.transitionDelay = `${index * 0.05}s`;
+        element.appendChild(span);
+    });
+    
+    requestAnimationFrame(() => {
+        Array.from(element.children).forEach(span => {
+            span.classList.add('active');
+        });
+    });
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyletter-left">Flying Letters Left</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlyletterLeft('flyletter-left', 'Flying Letters Left')">Replay</button>
+                                <button id="toggle-flyletter-left-code" onclick="toggleCode('flyletter-left-code')">Show Code</button>
+                                <button onclick="copyCode('flyletter-left-code')">Copy</button>
+                                <a href="text-animations/flyletter(left).js" download>Download</a>
+                            </div>
+                            <pre id="flyletter-left-code" style="display: none;"><code>/* CSS */
+.flyletter-left {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translate(-30px, -30px) rotate(-45deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity;
+}
+
+.flyletter-left.active {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+}
+
+/* JavaScript */
+function initializeFlyletterLeft(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = '';
+    
+    [...text].forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.className = 'flyletter-left';
+        span.style.transitionDelay = `${index * 0.05}s`;
+        element.appendChild(span);
+    });
+    
+    requestAnimationFrame(() => {
+        Array.from(element.children).forEach(span => {
+            span.classList.add('active');
+        });
+    });
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyletter-top">Flying Letters Top</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlyletterTop('flyletter-top', 'Flying Letters Top')">Replay</button>
+                                <button id="toggle-flyletter-top-code" onclick="toggleCode('flyletter-top-code')">Show Code</button>
+                                <button onclick="copyCode('flyletter-top-code')">Copy</button>
+                                <a href="text-animations/flyletter(top).js" download="flyletter-top.js">Download</a>
+                            </div>
+                            <pre id="flyletter-top-code" style="display: none;"><code>/* CSS */
+.flyletter-top {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-30px) rotate(-45deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity;
+}
+
+.flyletter-top.active {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* JavaScript */
+function initializeFlyletterTop(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = '';
+    
+    [...text].forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.className = 'flyletter-top';
+        span.style.transitionDelay = `${index * 0.05}s`;
+        element.appendChild(span);
+    });
+    
+    requestAnimationFrame(() => {
+        Array.from(element.children).forEach(span => {
+            span.classList.add('active');
+        });
+    });
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="flyletter-bottom">Flying Letters Bottom</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeFlyletterBottom('flyletter-bottom', 'Flying Letters Bottom')">Replay</button>
+                                <button id="toggle-flyletter-bottom-code" onclick="toggleCode('flyletter-bottom-code')">Show Code</button>
+                                <button onclick="copyCode('flyletter-bottom-code')">Copy</button>
+                                <a href="text-animations/flyletter(bottom).js" download="flyletter-bottom.js">Download</a>
+                            </div>
+                            <pre id="flyletter-bottom-code" style="display: none;"><code>/* CSS */
+.flyletter-bottom {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px) rotate(45deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform, opacity;
+}
+
+.flyletter-bottom.active {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+
+/* JavaScript */
+function initializeFlyletterBottom(elementId, text) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = '';
+    
+    [...text].forEach((char, index) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.className = 'flyletter-bottom';
+        span.style.transitionDelay = `${index * 0.05}s`;
+        element.appendChild(span);
+    });
+    
+    requestAnimationFrame(() => {
+        Array.from(element.children).forEach(span => {
+            span.classList.add('active');
+        });
+    });
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scramble Animations Row -->
+                <div class="animation-row">
+                    <h3 class="animation-row-title">Scramble Effects</h3>
+                    <div class="animation-boxes">
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="scramble-left">Scramble Left</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeScrambleLeft('scramble-left', 'Scramble Left')">Replay</button>
+                                <button id="toggle-scramble-left-code" onclick="toggleCode('scramble-left-code')">Show Code</button>
+                                <button onclick="copyCode('scramble-left-code')">Copy</button>
+                                <a href="text-animations/scramble(left).js" download="scramble-left.js">Download</a>
+                            </div>
+                            <pre id="scramble-left-code" style="display: none;"><code>/* CSS */
+.scramble-left {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.4s ease-out;
+}
+
+.scramble-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* JavaScript */
+function initializeScrambleLeft(elementId, text) {
+    const element = document.getElementById(elementId);
+    const finalText = text;
+    let currentText = '';
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+    
+    element.innerHTML = '';
+    element.classList.add('scramble-left');
+    
+    let counter = 0;
+    const scrambleInterval = setInterval(() => {
+        currentText = finalText.substring(0, counter) +
+            Array(finalText.length - counter).fill(0)
+                .map(() => chars[Math.floor(Math.random() * chars.length)])
+                .join('');
+        
+        element.textContent = currentText;
+        counter++;
+        
+        if (counter > finalText.length) {
+            clearInterval(scrambleInterval);
+            element.textContent = finalText;
+            element.classList.add('active');
+        }
+    }, 50);
+}</code></pre>
+                        </div>
+                        <div class="animation-box">
+                            <div class="animation">
+                                <div id="scramble-right">Scramble Right</div>
+                            </div>
+                            <div class="controls">
+                                <button onclick="initializeScrambleRight('scramble-right', 'Scramble Right')">Replay</button>
+                                <button id="toggle-scramble-right-code" onclick="toggleCode('scramble-right-code')">Show Code</button>
+                                <button onclick="copyCode('scramble-right-code')">Copy</button>
+                                <a href="text-animations/scramble(right).js" download="scramble-right.js">Download</a>
+                            </div>
+                            <pre id="scramble-right-code" style="display: none;"><code>/* CSS */
+.scramble-right {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.4s ease-out;
+}
+
+.scramble-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* JavaScript */
+function initializeScrambleRight(elementId, text) {
+    const element = document.getElementById(elementId);
+    const finalText = text;
+    let currentText = '';
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+    
+    element.innerHTML = '';
+    element.classList.add('scramble-right');
+    
+    let counter = 0;
+    const scrambleInterval = setInterval(() => {
+        currentText = finalText.substring(0, counter) +
+            Array(finalText.length - counter).fill(0)
+                .map(() => chars[Math.floor(Math.random() * chars.length)])
+                .join('');
+        
+        element.textContent = currentText;
+        counter++;
+        
+        if (counter > finalText.length) {
+            clearInterval(scrambleInterval);
+            element.textContent = finalText;
+            element.classList.add('active');
+        }
+    }, 50);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+

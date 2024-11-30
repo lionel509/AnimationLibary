@@ -1,0 +1,20 @@
+.typewriter {
+    font-family: var(--main-font);
+    font-size: var(--font-size-normal);
+    border-right: 2px solid #ffffff;
+    white-space: nowrap;
+    overflow: visible;
+    display: inline-block;
+    margin: 0 auto;
+    animation: blink 0.75s step-end infinite;
+    text-align: left;
+    min-width: 1ch;
+    position: relative;
+    font-family: var(--main-font);
+    font-size: var(--font-size-normal);
+}
+
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #ffffff }
+}

@@ -1,0 +1,20 @@
+.scramble-right {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    font-family: var(--main-font);
+    font-size: var(--font-size-normal);
+}
+
+.scramble-right.revealed {
+    opacity: 1;
+    transform: scale(1);
+    color: white;
+    text-shadow: none;
+    font-family: var(--main-font);
+    font-size: var(--font-size-normal);
+}

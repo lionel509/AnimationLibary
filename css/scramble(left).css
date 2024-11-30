@@ -1,0 +1,26 @@
+.scramble-left {
+    display: inline-block;
+    position: relative;
+    transform: translateX(-50px);
+    opacity: 0;
+    will-change: transform, opacity;
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.scramble-left.with-transition {
+    transition: transform 0.8s ease-out, opacity 0.4s ease-out;
+}
+
+.scramble-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scramble-left.revealed {
+    opacity: 1;
+    transform: scale(1);
+    color: white;
+    text-shadow: none;
+}

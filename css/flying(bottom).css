@@ -1,0 +1,18 @@
+.flying-bottom {
+    font-family: var(--main-font);
+    font-size: var(--font-size-normal);
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform: translateY(100px) rotate(15deg);
+    will-change: transform, opacity;
+}
+
+.flying-bottom.with-transition {
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flying-bottom.active {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
