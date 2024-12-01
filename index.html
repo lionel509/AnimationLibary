@@ -232,7 +232,7 @@ function initializeSlidingLeft(elementId, text) {
                     <div class="animation-boxes">
                         <div class="animation-box">
                             <div class="animation">
-                                <div id="flying-right" class="flying-right">Flying Right Animation</div>
+                                <div id="flying-right" class="flying-right with-transition">Flying Right Animation</div>
                             </div>
                             <div class="controls">
                                 <button onclick="replayFlying('flying-right')">Replay</button>
@@ -262,7 +262,7 @@ function initializeSlidingLeft(elementId, text) {
                         </div>
                         <div class="animation-box">
                             <div class="animation">
-                                <div id="flying-left" class="flying-left">Flying Word Left Animation</div>
+                                <div id="flying-left" class="flying-left with-transition">Flying Word Left Animation</div>
                             </div>
                             <div class="controls">
                                 <button onclick="replayFlying('flying-left')">Replay</button>
@@ -295,10 +295,10 @@ function initializeSlidingLeft(elementId, text) {
                                 <div id="flying-top" class="flying-top">Flying Top Animation</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlyingTop('flying-top', 'Flying Top Animation')">Replay</button>
-                                <button id="toggle-flying-top-code" onclick="toggleCode('flying-top-code')">Show Code</button>
+                                <button onclick="replayFlying('flying-top')">Replay</button>
+                                <button id="toggle-flying-top-code" onclick="toggleCode('flying-top-code', 'toggle-flying-top-code')">Show Code</button>
                                 <button onclick="copyCode('flying-top-code')">Copy</button>
-                                <a href="text-animations/flying(top).js" download="flying-top.js">Download</a>
+                                <button onclick="downloadCode('flying-top-code', 'flying-top.js')">Download</button>
                             </div>
                             <pre id="flying-top-code" style="display: none;"><code>/* CSS */
 .flying-top {
@@ -337,10 +337,10 @@ function initializeFlyingTop(elementId, text) {
                                 <div id="flying-bottom" class="flying-bottom">Flying Bottom Animation</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlyingBottom('flying-bottom', 'Flying Bottom Animation')">Replay</button>
-                                <button id="toggle-flying-bottom-code" onclick="toggleCode('flying-bottom-code')">Show Code</button>
+                                <button onclick="replayFlying('flying-bottom')">Replay</button>
+                                <button id="toggle-flying-bottom-code" onclick="toggleCode('flying-bottom-code', 'toggle-flying-bottom-code')">Show Code</button>
                                 <button onclick="copyCode('flying-bottom-code')">Copy</button>
-                                <a href="text-animations/flying(bottom).js" download="flying-bottom.js">Download</a>
+                                <button onclick="downloadCode('flying-bottom-code', 'flying-bottom.js')">Download</button>
                             </div>
                             <pre id="flying-bottom-code" style="display: none;"><code>/* CSS */
 .flying-bottom {
@@ -384,10 +384,10 @@ function initializeFlyingBottom(elementId, text) {
                                 <div id="flyword-right">Flying Words Right Animation</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlywordRight('flyword-right', 'Flying Words Right Animation')">Replay</button>
+                                <button onclick="replayFlyword('flyword-right', 'Flying Words Right Animation')">Replay</button>
                                 <button id="toggle-flyword-right-code" onclick="toggleCode('flyword-right-code')">Show Code</button>
                                 <button onclick="copyCode('flyword-right-code')">Copy</button>
-                                <a href="text-animations/flyword(right).js" download="flyword-right.js">Download</a>
+                                <button onclick="downloadCode('flyword-right-code', 'flyword-right.js')">Download</button>
                             </div>
                         </div>
                         <div class="animation-box">
@@ -395,10 +395,10 @@ function initializeFlyingBottom(elementId, text) {
                                 <div id="flyword-left">Flying Words Left Animation</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlywordLeft('flyword-left', 'Flying Words Left Animation')">Replay</button>
+                                <button onclick="replayFlyword('flyword-left', 'Flying Words Left Animation')">Replay</button>
                                 <button id="toggle-flyword-left-code" onclick="toggleCode('flyword-left-code')">Show Code</button>
                                 <button onclick="copyCode('flyword-left-code')">Copy</button>
-                                <a href="text-animations/flyword(left).js" download="flyword-left.js">Download</a>
+                                <button onclick="downloadCode('flyword-left-code', 'flyword-left.js')">Download</button>
                             </div>
                         </div>
                         <div class="animation-box">
@@ -406,10 +406,10 @@ function initializeFlyingBottom(elementId, text) {
                                 <div id="flyword-top">Flying Words Top Animation</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlywordTop('flyword-top', 'Flying Words Top Animation')">Replay</button>
+                                <button onclick="replayFlyword('flyword-top', 'Flying Words Top Animation')">Replay</button>
                                 <button id="toggle-flyword-top-code" onclick="toggleCode('flyword-top-code')">Show Code</button>
                                 <button onclick="copyCode('flyword-top-code')">Copy</button>
-                                <a href="text-animations/flyword(top).js" download>Download</a>
+                                <button onclick="downloadCode('flyword-top-code', 'flyword-top.js')">Download</button>
                             </div>
                             <pre id="flyword-top-code" style="display: none;"><code>/* CSS */
 .flyword-top {
@@ -437,7 +437,7 @@ function initializeFlywordTop(elementId, text) {
         const span = document.createElement('span');
         span.textContent = word + (index < words.length - 1 ? ' ' : '');
         span.className = 'flyword-top';
-        span.style.transitionDelay = `${index * 0.1}s`;
+        span.style.transitionDelay = `${index * 0.1s}`;
         element.appendChild(span);
     });
     
@@ -453,10 +453,10 @@ function initializeFlywordTop(elementId, text) {
                                 <div id="flyword-bottom">Flying Words Bottom Animation</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlywordBottom('flyword-bottom', 'Flying Words Bottom Animation')">Replay</button>
+                                <button onclick="replayFlyword('flyword-bottom', 'Flying Words Bottom Animation')">Replay</button>
                                 <button id="toggle-flyword-bottom-code" onclick="toggleCode('flyword-bottom-code')">Show Code</button>
                                 <button onclick="copyCode('flyword-bottom-code')">Copy</button>
-                                <a href="text-animations/flyword(bottom).js" download>Download</a>
+                                <button onclick="downloadCode('flyword-bottom-code', 'flyword-bottom.js')">Download</button>
                             </div>
                             <pre id="flyword-bottom-code" style="display: none;"><code>/* CSS */
 .flyword-bottom {
@@ -484,7 +484,7 @@ function initializeFlywordBottom(elementId, text) {
         const span = document.createElement('span');
         span.textContent = word + (index < words.length - 1 ? ' ' : '');
         span.className = 'flyword-bottom';
-        span.style.transitionDelay = `${index * 0.1}s`;
+        span.style.transitionDelay = `${index * 0.1s}`;
         element.appendChild(span);
     });
     
@@ -505,10 +505,10 @@ function initializeFlywordBottom(elementId, text) {
                                 <div id="flyletter-right">Flying Letters Right</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlyletterRight('flyletter-right', 'Flying Letters Right')">Replay</button>
+                                <button onclick="replayFlyletter('flyletter-right', 'Flying Letters Right')">Replay</button>
                                 <button id="toggle-flyletter-right-code" onclick="toggleCode('flyletter-right-code')">Show Code</button>
                                 <button onclick="copyCode('flyletter-right-code')">Copy</button>
-                                <a href="text-animations/flyletter(right).js" download>Download</a>
+                                <button onclick="downloadCode('flyletter-right-code', 'flyletter-right.js')">Download</button>
                             </div>
                             <pre id="flyletter-right-code" style="display: none;"><code>/* CSS */
 .flyletter-right {
@@ -534,7 +534,7 @@ function initializeFlyletterRight(elementId, text) {
         const span = document.createElement('span');
         span.textContent = char === ' ' ? '\u00A0' : char;
         span.className = 'flyletter-right';
-        span.style.transitionDelay = `${index * 0.05}s`;
+        span.style.transitionDelay = `${index * 0.05s}`;
         element.appendChild(span);
     });
     
@@ -550,10 +550,10 @@ function initializeFlyletterRight(elementId, text) {
                                 <div id="flyletter-left">Flying Letters Left</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlyletterLeft('flyletter-left', 'Flying Letters Left')">Replay</button>
+                                <button onclick="replayFlyletter('flyletter-left', 'Flying Letters Left')">Replay</button>
                                 <button id="toggle-flyletter-left-code" onclick="toggleCode('flyletter-left-code')">Show Code</button>
                                 <button onclick="copyCode('flyletter-left-code')">Copy</button>
-                                <a href="text-animations/flyletter(left).js" download>Download</a>
+                                <button onclick="downloadCode('flyletter-left-code', 'flyletter-left.js')">Download</button>
                             </div>
                             <pre id="flyletter-left-code" style="display: none;"><code>/* CSS */
 .flyletter-left {
@@ -579,7 +579,7 @@ function initializeFlyletterLeft(elementId, text) {
         const span = document.createElement('span');
         span.textContent = char === ' ' ? '\u00A0' : char;
         span.className = 'flyletter-left';
-        span.style.transitionDelay = `${index * 0.05}s`;
+        span.style.transitionDelay = `${index * 0.05s}`;
         element.appendChild(span);
     });
     
@@ -595,10 +595,10 @@ function initializeFlyletterLeft(elementId, text) {
                                 <div id="flyletter-top">Flying Letters Top</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlyletterTop('flyletter-top', 'Flying Letters Top')">Replay</button>
+                                <button onclick="replayFlyletter('flyletter-top', 'Flying Letters Top')">Replay</button>
                                 <button id="toggle-flyletter-top-code" onclick="toggleCode('flyletter-top-code')">Show Code</button>
                                 <button onclick="copyCode('flyletter-top-code')">Copy</button>
-                                <a href="text-animations/flyletter(top).js" download="flyletter-top.js">Download</a>
+                                <button onclick="downloadCode('flyletter-top-code', 'flyletter-top.js')">Download</button>
                             </div>
                             <pre id="flyletter-top-code" style="display: none;"><code>/* CSS */
 .flyletter-top {
@@ -624,7 +624,7 @@ function initializeFlyletterTop(elementId, text) {
         const span = document.createElement('span');
         span.textContent = char === ' ' ? '\u00A0' : char;
         span.className = 'flyletter-top';
-        span.style.transitionDelay = `${index * 0.05}s`;
+        span.style.transitionDelay = `${index * 0.05s}`;
         element.appendChild(span);
     });
     
@@ -640,10 +640,10 @@ function initializeFlyletterTop(elementId, text) {
                                 <div id="flyletter-bottom">Flying Letters Bottom</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeFlyletterBottom('flyletter-bottom', 'Flying Letters Bottom')">Replay</button>
+                                <button onclick="replayFlyletter('flyletter-bottom', 'Flying Letters Bottom')">Replay</button>
                                 <button id="toggle-flyletter-bottom-code" onclick="toggleCode('flyletter-bottom-code')">Show Code</button>
                                 <button onclick="copyCode('flyletter-bottom-code')">Copy</button>
-                                <a href="text-animations/flyletter(bottom).js" download="flyletter-bottom.js">Download</a>
+                                <button onclick="downloadCode('flyletter-bottom-code', 'flyletter-bottom.js')">Download</button>
                             </div>
                             <pre id="flyletter-bottom-code" style="display: none;"><code>/* CSS */
 .flyletter-bottom {
@@ -669,7 +669,7 @@ function initializeFlyletterBottom(elementId, text) {
         const span = document.createElement('span');
         span.textContent = char === ' ' ? '\u00A0' : char;
         span.className = 'flyletter-bottom';
-        span.style.transitionDelay = `${index * 0.05}s`;
+        span.style.transitionDelay = `${index * 0.05s}`;
         element.appendChild(span);
     });
     
@@ -692,10 +692,10 @@ function initializeFlyletterBottom(elementId, text) {
                                 <div id="scramble-left">Scramble Left</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeScrambleLeft('scramble-left', 'Scramble Left')">Replay</button>
+                                <button onclick="replayScramble('scramble-left', 'Scramble Left')">Replay</button>
                                 <button id="toggle-scramble-left-code" onclick="toggleCode('scramble-left-code')">Show Code</button>
                                 <button onclick="copyCode('scramble-left-code')">Copy</button>
-                                <a href="text-animations/scramble(left).js" download="scramble-left.js">Download</a>
+                                <button onclick="downloadCode('scramble-left-code', 'scramble-left.js')">Download</button>
                             </div>
                             <pre id="scramble-left-code" style="display: none;"><code>/* CSS */
 .scramble-left {
@@ -743,10 +743,10 @@ function initializeScrambleLeft(elementId, text) {
                                 <div id="scramble-right">Scramble Right</div>
                             </div>
                             <div class="controls">
-                                <button onclick="initializeScrambleRight('scramble-right', 'Scramble Right')">Replay</button>
+                                <button onclick="replayScramble('scramble-right', 'Scramble Right')">Replay</button>
                                 <button id="toggle-scramble-right-code" onclick="toggleCode('scramble-right-code')">Show Code</button>
                                 <button onclick="copyCode('scramble-right-code')">Copy</button>
-                                <a href="text-animations/scramble(right).js" download="scramble-right.js">Download</a>
+                                <button onclick="downloadCode('scramble-right-code', 'scramble-right.js')">Download</button>
                             </div>
                             <pre id="scramble-right-code" style="display: none;"><code>/* CSS */
 .scramble-right {
