@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function typeWriter() {
         if (index < text.length) {
-            typewriterElement.textContent += text.charAt(index);
+            if (typewriterElement) {
+                typewriterElement.textContent += text.charAt(index);
+            }
             index++;
             setTimeout(typeWriter, speed);
         }

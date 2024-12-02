@@ -1,4 +1,4 @@
-function initializeFlyingRight(elementId: string, text: string): void {
+function initializeFlyingTopunique(elementId: string, text: string): void {
     const element = document.getElementById(elementId);
     if (!element) {
         console.error(`Element with id '${elementId}' not found`);
@@ -8,14 +8,14 @@ function initializeFlyingRight(elementId: string, text: string): void {
     // Reset the element
     element.classList.remove('active');
     element.classList.remove('with-transition');
-    element.classList.remove('flying-right');
+    element.classList.remove('flying-top');
     element.textContent = text;
     
     // Force reflow
     void element.offsetWidth;
     
     // Add classes and trigger animation
-    element.classList.add('flying-right', 'with-transition');
+    element.classList.add('flying-top', 'with-transition');
     requestAnimationFrame(() => {
         element.classList.add('active');
     });

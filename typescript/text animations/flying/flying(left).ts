@@ -1,4 +1,4 @@
-function initializeFlyingLeft(elementId: string, text: string): void {
+function initializeFlyingLeftunique(elementId: string, text: string): void {
     const element = document.getElementById(elementId);
     if (!element) {
         console.error(`Element with id '${elementId}' not found`);
